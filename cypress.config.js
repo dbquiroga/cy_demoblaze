@@ -9,5 +9,9 @@ module.exports = defineConfig({
 
   env: {
     baseUrl: "https://www.demoblaze.com/index.html"
-  }
+  },
+
+  chromeWebSecurity: true,
+  watchForFileChanges	: false
+
 });

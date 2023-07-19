@@ -17,36 +17,59 @@ let usersData;
     loginPage.clickNavbarLogin();
   })
 
-  it.only('Login passes', () => {
-    // Check modal login exists
-    cy.get(loginPage.loginModal)
-    .should('have.class', 'modal')
-    .and('have.class', 'fade')
-    .and('have.class', 'show')
-
-    cy.get('#loginusername').clear();
+  it('Login passes', () => {
+    cy.get(loginPage.loginModal).should('be.visible', { timeout: 7000 })
+   
+    loginPage.clearLoginUsername()
 
     loginPage.typeUser(usersData.valid.user)
     loginPage.typePass(usersData.valid.pass)
     loginPage.clickLogin()
+
+    cy.get(loginPage.loginModal).should('not.be.visible', { timeout: 7000 })
+    cy.get(loginPage.nameUser).contains('Welcome')
   })
 
   it('Login fail for pass invalid', () => {
+    cy.get(loginPage.loginModal).should('be.visible', { timeout: 7000 })
+   
+    loginPage.clearLoginUsername()
+
     loginPage.typeUser(usersData.valid.user)
-    loginPage.typeUser(usersData.invalid.pass)
+    loginPage.typePass(usersData.invalid.pass)
     loginPage.clickLogin()
+
+    cy.on('window:alert', (t) => {
+      expect(t).to.contains('Wrong password.');
+    })
   });
 
   it('Login fail for user invalid', () => {
+    cy.get(loginPage.loginModal).should('be.visible', { timeout: 7000 })
+   
+    loginPage.clearLoginUsername()
+
     loginPage.typeUser(usersData.invalid.user)
-    loginPage.typeUser(usersData.valid.pass)
+    loginPage.typePass(usersData.valid.pass)
     loginPage.clickLogin()
+
+    cy.on('window:alert', (t) => {
+      expect(t).to.contains('User does not exist.');
+    })
   });
 
-  it('Login fail for user, and pass invalid', () => {
+  it.only('Login fail for user, and pass invalid', () => {
+    cy.get(loginPage.loginModal).should('be.visible', { timeout: 7000 })
+   
+    loginPage.clearLoginUsername()
+
     loginPage.typeUser(usersData.invalid.user)
-    loginPage.typeUser(usersData.invalid.pass)
+    loginPage.typePass(usersData.invalid.pass)
     loginPage.clickLogin()
+
+    cy.on('window:alert', (t) => {
+      expect(t).to.contains('User does not exist.');
+    })
   });
 
 
