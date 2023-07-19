@@ -1,0 +1,23 @@
+{
+  "name": "cy_demoblaze",
+  "version": "1.0.0",
+  "description": "Test ecommerce with Cypress + Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbquiroga/cy_demoblaze.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dbquiroga/cy_demoblaze/issues"
+  },
+  "homepage": "https://github.com/dbquiroga/cy_demoblaze#readme",
+  "devDependencies": {
+    "cypress": "^10.3.0"
+  }
+}

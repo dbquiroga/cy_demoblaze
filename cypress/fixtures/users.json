@@ -1,0 +1,10 @@
+{
+    "valid":{
+        "user": "day23525436546546546546546",
+        "pass": "Qwerty123"
+    },
+    "invalid":{
+        "user": "invalid",
+        "pass": "123234343444"
+    }
+}
